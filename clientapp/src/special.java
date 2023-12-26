@@ -51,13 +51,13 @@ JTable table = new JTable(model);
                                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "root");
                                     Statement stmt = con.createStatement();
                                     ResultSet rs = stmt.executeQuery("select * from client where speciality = '" + choice + "'")) {
-                
+                                    model.setRowCount(0);
                                     while (rs.next()) {
                                         String name = rs.getString("name");
                                         String age = rs.getString("age");
                                         String speciality = rs.getString("speciality");
                                         String club = rs.getString("club");
-                                        model.setRowCount(0);
+                                        
                                         model.addRow(new Object[]{name, age, speciality, club});
                                     }
                                 } catch (SQLException e1) {
